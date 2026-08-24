@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Loading…</title>
+<meta id="metaDesc" name="description" content="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B3A3F;       /* deep pine-teal, headings */
+    --bg:#F6F4EF;        /* warm paper */
+    --panel:#FFFFFF;
+    --gold:#B08D57;      /* accent: brushed gold */
+    --sage:#7C9885;      /* secondary accent */
+    --line:#E4DFD4;
+    --text:#3A4441;
+    --radius:14px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Work Sans', sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Fraunces', serif; color:var(--ink); font-weight:600; letter-spacing:-0.01em;}
+  a{color:inherit;}
+  img{max-width:100%; display:block; border-radius:var(--radius);}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 24px;}
+
+  /* Header */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(246,244,239,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .headerRow{display:flex; align-items:center; justify-content:space-between; padding:14px 24px; max-width:1080px; margin:0 auto;}
+  .brand{font-family:'Fraunces', serif; font-weight:600; font-size:1.15rem; color:var(--ink);}
+  .headerCta{
+    display:flex; gap:10px;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:11px 18px; border-radius:999px;
+    font-weight:600; font-size:0.92rem;
+    text-decoration:none; border:1.5px solid transparent;
+    transition:transform .15s ease, opacity .15s ease;
+  }
+  .btn:active{transform:scale(0.97);}
+  .btn-primary{background:var(--ink); color:#fff;}
+  .btn-outline{border-color:var(--ink); color:var(--ink);}
+  @media (max-width:560px){ .btn span.full{display:none;} }
+
+  /* Hero */
+  .hero{
+    padding:64px 24px 56px;
+    max-width:1080px; margin:0 auto;
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:center;
+  }
+  .eyebrow{
+    display:inline-block; font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--gold); font-weight:600; margin-bottom:14px;
+  }
+  .hero h1{font-size:clamp(2rem, 4vw, 2.9rem); line-height:1.12; margin-bottom:16px;}
+  .hero p.lead{font-size:1.08rem; color:var(--text); max-width:46ch; margin-bottom:28px;}
+  .heroCtas{display:flex; gap:12px; flex-wrap:wrap;}
+  .heroImg{border-radius:20px; overflow:hidden; aspect-ratio:4/5; background:var(--sage);}
+  .heroImg img{width:100%; height:100%; object-fit:cover; border-radius:20px;}
+  @media (max-width:800px){
+    .hero{grid-template-columns:1fr; padding-top:40px;}
+    .heroImg{aspect-ratio:16/10; order:-1;}
+  }
+
+  /* Trust bar */
+  .trustBar{
+    background:var(--ink); color:#fff;
+    padding:22px 24px;
+  }
+  .trustRow{
+    max-width:1080px; margin:0 auto;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:20px;
+    text-align:center;
+  }
+  .trustItem{flex:1; min-width:130px;}
+  .trustItem .num{font-family:'Fraunces', serif; font-size:1.6rem; font-weight:600; color:#fff;}
+  .trustItem .lbl{font-size:0.78rem; color:#D8CDBE; text-transform:uppercase; letter-spacing:0.06em; margin-top:2px;}
+
+  /* Section shell */
+  section{padding:64px 24px;}
+  .sectionHead{max-width:640px; margin:0 auto 40px; text-align:center;}
+  .sectionHead .eyebrow{display:block;}
+  .sectionHead h2{font-size:clamp(1.6rem, 3vw, 2.1rem);}
+
+  /* Services */
+  .services{display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; max-width:1080px; margin:0 auto;}
+  .svcCard{
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+    padding:26px 22px;
+  }
+  .svcCard .icon{
+    width:42px; height:42px; border-radius:10px; background:#EFE7D8;
+    display:flex; align-items:center; justify-content:center; margin-bottom:14px;
+    color:var(--gold); font-size:1.2rem;
+  }
+  .svcCard h3{font-size:1.05rem; margin-bottom:6px;}
+  .svcCard p{font-size:0.92rem; color:#5A645F;}
+  @media (max-width:760px){ .services{grid-template-columns:1fr 1fr;} }
+  @media (max-width:520px){ .services{grid-template-columns:1fr;} }
+
+  /* Visit steps - real sequence, numbering justified */
+  .steps{max-width:1080px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:0; position:relative;}
+  .step{padding:0 22px; position:relative;}
+  .step .stepNum{
+    font-family:'Fraunces', serif; font-size:0.85rem; color:var(--gold); font-weight:600;
+    border:1.5px solid var(--gold); border-radius:50%; width:32px; height:32px;
+    display:flex; align-items:center; justify-content:center; margin-bottom:16px;
+  }
+  .step h3{font-size:1.05rem; margin-bottom:8px;}
+  .step p{font-size:0.92rem; color:#5A645F;}
+  @media (max-width:760px){ .steps{grid-template-columns:1fr; gap:28px;} }
+
+  /* Smile gallery */
+  .gallery{max-width:1080px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:14px;}
+  .gallery img{aspect-ratio:1; object-fit:cover;}
+  @media (max-width:700px){ .gallery{grid-template-columns:repeat(2,1fr);} }
+
+  /* Hours + map */
+  .hoursWrap{
+    max-width:1080px; margin:0 auto; display:grid; grid-template-columns:0.9fr 1.1fr; gap:32px;
+    background:var(--panel); border:1px solid var(--line); border-radius:20px; overflow:hidden;
+  }
+  .hoursCol{padding:36px 32px;}
+  .hoursCol h3{font-size:1.2rem; margin-bottom:18px;}
+  .hourRow{display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px dashed var(--line); font-size:0.94rem;}
+  .hourRow:last-child{border-bottom:none;}
+  .mapCol iframe{width:100%; height:100%; min-height:320px; border:0; display:block;}
+  @media (max-width:800px){ .hoursWrap{grid-template-columns:1fr;} .mapCol iframe{min-height:260px;} }
+
+  /* Emergency / booking CTA band */
+  .ctaBand{
+    background:var(--sage); color:#fff; text-align:center; padding:56px 24px;
+  }
+  .ctaBand h2{color:#fff; font-size:clamp(1.5rem,3vw,2rem); margin-bottom:12px;}
+  .ctaBand p{color:#EAF1EC; margin-bottom:26px; max-width:44ch; margin-left:auto; margin-right:auto;}
+  .ctaBand .btn-primary{background:#fff; color:var(--ink);}
+
+  footer{padding:36px 24px; text-align:center; font-size:0.85rem; color:#7C877F;}
+  footer a{text-decoration:underline;}
+  .demoTag{
+    background:#FFF7E6; border:1px solid #F0DFAF; color:#8A6D1F;
+    font-size:0.78rem; text-align:center; padding:8px 12px;
+  }
+</style>
+</head>
+<body>
+
+<div class="demoTag">Sample site prepared for <span id="tagName"></span> — not a live business page</div>
+
+<header>
+  <div class="headerRow">
+    <div class="brand" id="brandName"></div>
+    <div class="headerCta">
+      <a class="btn btn-outline" id="callBtn" href="#"><span>📞</span><span class="full">Call</span></a>
+      <a class="btn btn-primary" id="bookBtn" href="#"><span class="full">Book a visit</span><span>→</span></a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div>
+    <span class="eyebrow" id="heroEyebrow"></span>
+    <h1 id="heroHeadline"></h1>
+    <p class="lead" id="heroLead"></p>
+    <div class="heroCtas">
+      <a class="btn btn-primary" id="heroCallBtn" href="#">Call now</a>
+      <a class="btn btn-outline" id="heroWaBtn" href="#">Message on WhatsApp</a>
+    </div>
+  </div>
+  <div class="heroImg"><img id="heroImg" src="" alt=""></div>
+</section>
+
+<div class="trustBar">
+  <div class="trustRow" id="trustRow"></div>
+</div>
+
+<section id="services">
+  <div class="sectionHead">
+    <span class="eyebrow">What we treat</span>
+    <h2>Care for every stage of your smile</h2>
+  </div>
+  <div class="services" id="servicesGrid"></div>
+</section>
+
+<section style="background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="sectionHead">
+    <span class="eyebrow">How it works</span>
+    <h2>Your visit, step by step</h2>
+  </div>
+  <div class="steps" id="stepsGrid"></div>
+</section>
+
+<section>
+  <div class="sectionHead">
+    <span class="eyebrow">Recent smiles</span>
+    <h2>A glimpse of the practice</h2>
+  </div>
+  <div class="gallery" id="galleryGrid"></div>
+</section>
+
+<section>
+  <div class="hoursWrap">
+    <div class="hoursCol">
+      <h3>Hours</h3>
+      <div id="hoursList"></div>
+      <div style="margin-top:22px; font-size:0.92rem; color:#5A645F;">
+        <div id="addrLine"></div>
+        <div id="phoneLine" style="margin-top:4px;"></div>
+      </div>
+    </div>
+    <div class="mapCol"><iframe id="mapFrame" src="" loading="lazy"></iframe></div>
+  </div>
+</section>
+
+<div class="ctaBand">
+  <h2>New patients welcome</h2>
+  <p>Most insurance accepted. Same-week appointments for new patients in most cases.</p>
+  <a class="btn btn-primary" id="ctaBookBtn" href="#">Book your first visit</a>
+</div>
+
+<footer>
+  <div id="footName"></div>
+  <div style="margin-top:6px;"><span id="footAddr"></span> · <span id="footPhone"></span></div>
+  <div style="margin-top:10px; opacity:0.8;">This is a free sample built to show what a real site could look like — no obligation.</div>
+</footer>
+
+<script>
+/* ============ EDIT THIS BLOCK PER PROSPECT ============ */
+const BIZ = {
+  name: "Willowbrook Family Dental",
+  city: "Springfield",
+  tagline: "Gentle, modern dentistry for every member of the family",
+  phone: "+1 (555) 013-4488",
+  phoneDisplay: "(555) 013-4488",
+  whatsapp: "15550134488",
+  address: "214 Willowbrook Ave, Springfield",
+  mapEmbed: "https://www.google.com/maps?q=214+Willowbrook+Ave+Springfield&output=embed",
+  hours: {
+    "Mon – Thu": "8:00 AM – 5:00 PM",
+    "Fri": "8:00 AM – 2:00 PM",
+    "Sat": "By appointment",
+    "Sun": "Closed"
+  },
+  yearsInPractice: 14,
+  patientsServed: "6,200+",
+  insurancePlans: "9+",
+  heroImage: "images/hero.jpg",
+  gallery: ["images/g1.jpg","images/g2.jpg","images/g3.jpg","images/g4.jpg"],
+  services: [
+    { icon:"🦷", title:"General checkups", desc:"Cleanings, exams, and preventive care for the whole family." },
+    { icon:"✨", title:"Cosmetic dentistry", desc:"Whitening, veneers, and smile makeovers done conservatively." },
+    { icon:"🧒", title:"Kids' dentistry", desc:"A calm, friendly first experience for younger patients." },
+    { icon:"🦴", title:"Crowns & bridges", desc:"Durable restorations matched to your natural bite and shade." },
+    { icon:"⚡", title:"Emergency care", desc:"Same-day relief for pain, breaks, and urgent issues." },
+    { icon:"😴", title:"Sleep & TMJ", desc:"Custom night guards and bite therapy for jaw pain." }
+  ],
+  accent: "#B08D57"
+};
+/* ======================================================= */
+
+document.title = `${BIZ.name} | Dentist in ${BIZ.city}`;
+document.getElementById('metaDesc').setAttribute('content', `${BIZ.name} — family dentist in ${BIZ.city}. ${BIZ.tagline}. Call ${BIZ.phoneDisplay} to book.`);
+document.getElementById('tagName').textContent = BIZ.name;
+document.getElementById('brandName').textContent = BIZ.name;
+document.getElementById('heroEyebrow').textContent = `Dentist in ${BIZ.city}`;
+document.getElementById('heroHeadline').textContent = BIZ.tagline;
+document.getElementById('heroLead').textContent = `${BIZ.name} has been caring for ${BIZ.city} smiles for ${BIZ.yearsInPractice} years. New patients are always welcome.`;
+document.getElementById('heroImg').src = BIZ.heroImage;
+document.getElementById('heroImg').alt = BIZ.name;
+
+const telHref = `tel:${BIZ.phone.replace(/\s/g,'')}`;
+const waHref = `https://wa.me/${BIZ.whatsapp}`;
+['callBtn','heroCallBtn'].forEach(id => { const el=document.getElementById(id); el.href=telHref; if(el.querySelector('.full')) el.querySelector('.full').textContent='Call'; });
+document.getElementById('callBtn').innerHTML = `📞 <span class="full">${BIZ.phoneDisplay}</span>`;
+document.getElementById('heroCallBtn').textContent = `Call ${BIZ.phoneDisplay}`;
+document.getElementById('heroWaBtn').href = waHref;
+document.getElementById('bookBtn').href = waHref;
+document.getElementById('ctaBookBtn').href = waHref;
+
+document.getElementById('trustRow').innerHTML = `
+  <div class="trustItem"><div class="num">${BIZ.yearsInPractice}+</div><div class="lbl">Years in practice</div></div>
+  <div class="trustItem"><div class="num">${BIZ.patientsServed}</div><div class="lbl">Patients treated</div></div>
+  <div class="trustItem"><div class="num">${BIZ.insurancePlans}</div><div class="lbl">Insurance plans accepted</div></div>
+  <div class="trustItem"><div class="num">4.9★</div><div class="lbl">Average rating</div></div>
+`;
+
+document.getElementById('servicesGrid').innerHTML = BIZ.services.map(s => `
+  <div class="svcCard">
+    <div class="icon">${s.icon}</div>
+    <h3>${s.title}</h3>
+    <p>${s.desc}</p>
+  </div>
+`).join('');
+
+const stepsData = [
+  { title:"Book online or call", desc:"Choose a time that works — most requests are confirmed same day." },
+  { title:"Meet the team", desc:"A short consult so we understand your history and concerns first." },
+  { title:"Leave smiling", desc:"Clear next steps, no surprise charges, and a plan that fits your schedule." }
+];
+document.getElementById('stepsGrid').innerHTML = stepsData.map((s,i) => `
+  <div class="step">
+    <div class="stepNum">${i+1}</div>
+    <h3>${s.title}</h3>
+    <p>${s.desc}</p>
+  </div>
+`).join('');
+
+document.getElementById('galleryGrid').innerHTML = BIZ.gallery.map(src => `<img src="${src}" alt="${BIZ.name} patient smile" loading="lazy">`).join('');
+
+document.getElementById('hoursList').innerHTML = Object.entries(BIZ.hours).map(([d,h]) => `
+  <div class="hourRow"><span>${d}</span><span>${h}</span></div>
+`).join('');
+document.getElementById('addrLine').textContent = BIZ.address;
+document.getElementById('phoneLine').textContent = BIZ.phoneDisplay;
+document.getElementById('mapFrame').src = BIZ.mapEmbed;
+
+document.getElementById('footName').textContent = BIZ.name;
+document.getElementById('footAddr').textContent = BIZ.address;
+document.getElementById('footPhone').textContent = BIZ.phoneDisplay;
+
+document.documentElement.style.setProperty('--gold', BIZ.accent);
+
+const ld = document.createElement('script');
+ld.type = 'application/ld+json';
+ld.textContent = JSON.stringify({
+  "@context":"https://schema.org",
+  "@type":"Dentist",
+  "name": BIZ.name,
+  "address": BIZ.address,
+  "telephone": BIZ.phone
+});
+document.head.appendChild(ld);
+</script>
+</body>
+</html>
